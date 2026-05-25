@@ -1,0 +1,66 @@
+import { ArrowLeft, Clock, MapPin, Users } from 'lucide-react';
+import Link from 'next/link';
+
+export default function JobDetail({ params }) {
+  const job = {
+    title: "Senior Webflow Developer for SaaS Landing Page",
+    client: "Nova Dynamics",
+    budget: "$4,800",
+    duration: "3 weeks",
+    location: "Remote",
+    description: "We need an expert Webflow developer to create a stunning, high-converting marketing website.",
+    requirements: [
+      "5+ years Webflow experience",
+      "Strong portfolio in SaaS websites",
+      "Advanced animation skills",
+      "Figma to Webflow workflow"
+    ]
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto p-10">
+      <Link href="/jobs" className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-700 mb-8">
+        <ArrowLeft size={20} /> Back to jobs
+      </Link>
+
+      <div className="bg-white rounded-3xl p-12 border">
+        <div className="flex justify-between">
+          <div>
+            <h1 className="text-4xl font-semibold">{job.title}</h1>
+            <p className="text-2xl text-neutral-500 mt-3">{job.client}</p>
+          </div>
+          <div className="text-right">
+            <div className="text-5xl font-bold text-emerald-600">{job.budget}</div>
+          </div>
+        </div>
+
+        <div className="flex gap-8 mt-10 text-sm">
+          <div className="flex items-center gap-2"><Clock size={20} /> {job.duration}</div>
+          <div className="flex items-center gap-2"><MapPin size={20} /> {job.location}</div>
+          <div className="flex items-center gap-2"><Users size={20} /> 23 proposals</div>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="font-semibold text-lg mb-4">About this project</h3>
+          <p className="text-neutral-600 leading-relaxed">{job.description}</p>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="font-semibold text-lg mb-4">Requirements</h3>
+          <ul className="space-y-3">
+            {job.requirements.map((req, i) => (
+              <li key={i} className="flex gap-3">
+                <span className="text-primary-600">•</span>
+                {req}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <button className="mt-16 w-full bg-primary-600 hover:bg-primary-700 text-white py-5 rounded-2xl text-lg font-medium">
+          Submit Proposal
+        </button>
+      </div>
+    </div>
+  );
+}
