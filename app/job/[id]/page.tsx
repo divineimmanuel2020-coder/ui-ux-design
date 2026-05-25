@@ -1,7 +1,9 @@
 import { ArrowLeft, Clock, MapPin, Users } from 'lucide-react';
 import Link from 'next/link';
 
-export default function JobDetail({ params }: { params: { id: string } }) {
+export default async function JobDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+
   const job = {
     title: "Senior Webflow Developer for SaaS Landing Page",
     client: "Nova Dynamics",
@@ -63,4 +65,4 @@ export default function JobDetail({ params }: { params: { id: string } }) {
       </div>
     </div>
   );
-}
+      }
